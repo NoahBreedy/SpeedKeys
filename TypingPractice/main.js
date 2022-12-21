@@ -1,7 +1,13 @@
 const mainLetterRef = document.getElementById("mainLetter");
 const resultsContainer = document.getElementById("results");
-const optionsRef = [{main:document.getElementById("capsOption"),withR:document.getElementById("capsWithRandomness")},
-document.getElementById("lettersOption"),document.getElementById("resetOption"),document.getElementById("gameModes"),document.getElementById("customStringOption")]
+const optionsRef = [
+{main:document.getElementById("capsOption"),withR:document.getElementById("capsWithRandomness")},
+document.getElementById("lettersOption"),
+document.getElementById("resetOption"),
+document.getElementById("gameModes"),
+document.getElementById("customStringOption"),
+document.getElementById("noRepeatsOption")
+]
 
 let player = {shiftDown:false,key:null,index:0}
 let practiceCount = optionsRef[1].value % 100;
@@ -22,6 +28,7 @@ function getRandomInt(min, max) {
     return Math.floor((Math.random() * (max - min))) + min;
 }
 
+
 function genCharacters(){
 
     let useCustomString = false;
@@ -32,9 +39,18 @@ function genCharacters(){
 
     practiceCount = optionsRef[1].value % 100;
     keys = [];
+    let lastKey = "";
     for(var i =0;i<practiceCount;i++){
 
         keys[i] = String.fromCharCode(getRandomInt(65,90)).toLowerCase();
+        
+        if(optionsRef[5].checked && optionsRef[4].value == ""){
+            while(lastKey == keys[i]){
+                keys[i] = String.fromCharCode(getRandomInt(65,90)).toLowerCase();
+            }
+            lastKey = keys[i];
+        }
+        
 
         if(useCustomString){
             keys[i] = optionsRef[4].value[i];
