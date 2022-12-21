@@ -1,0 +1,105 @@
+<!Doctype html>
+<html>
+    <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Martian+Mono&display=swap" rel="stylesheet">
+        <style>
+            #mainLetter{
+                display: block;
+                font-size: 16em;
+                margin-left: 0;
+                margin-right: 0;
+                font-weight: bold;
+                text-align: center;
+            }
+            .options{
+                position: fixed;
+                bottom: 0;
+                width: 97%;
+                padding: 15px;
+            }
+            .results{
+                position: absolute;
+                right: 0px;
+                width: 300px;
+                height: 200px;
+                border: 3px solid #3d3d3d;
+                padding: 40px;
+                overflow : scroll;
+                overflow-x: hidden;
+            }
+            /* .results::-webkit-scrollbar{
+                display: none;
+            } */
+            .resultsTitle{
+                 position: absolute;
+                 right: 0px;
+                 width: 300px;
+                /*top: 50px;*/
+                font-family: verdana;
+            }
+ 
+            button {
+                align-items: center;
+                font-family: -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+                border-radius: 6px;
+                border: none;
+
+                background: #6E6D70;
+                box-shadow: 0px 0.5px 1px rgba(0, 0, 0, 0.1), inset 0px 0.5px 0.5px rgba(255, 255, 255, 0.5), 0px 0px 0px 0.5px rgba(0, 0, 0, 0.12);
+                color: #DFDEDF;
+                user-select: none;
+                -webkit-user-select: none;
+                touch-action: manipulation;
+            }
+
+            button:active {
+                box-shadow: inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2), 0px 0.5px 1px rgba(0, 0, 0, 0.1), 0px 0px 0px 3.5px rgba(58, 108, 217, 0.5);
+                outline: 0;
+            }
+        </style>
+        <title>Typing Practice!</title>
+    </head>
+    <body>
+
+        <h1 style="font-family: 'Martian Mono', monospace;">Welcome To Speed Keys</h1>
+        <div class = "resultsTitle">
+            <h2><u>KeyLog:</u></h2>
+            <ul id="results" class="results"></ul>
+        </div>
+        <div>
+        <h1 id="mainLetter"></h1>
+        </div>
+        <div>
+            <fieldset class="options">
+            <label for="addCaps"><strong>Include Capital Letters (add randomness):</strong></label>
+            <input id="capsOption" name="addCaps" type="checkbox"/>
+            <input id="capsWithRandomness" name="addCaps2" type="checkbox"/>
+            <label style="padding-left: 15px;" for="letterCount"><strong>Letter Count:</strong></label>
+            <input id="lettersOption" value="10" type="number"/>
+            <label style="padding-left: 15px;" for="resetLetters"><strong>Generate new letters on loop:</strong></label>
+            <input id="resetOption" name="resetLetters" type="checkbox"/>
+            <label style="padding-left: 15px;" for="gameModes"><strong>Representation: </strong></label>
+            <select name="gameModes" id="gameModes">
+                <option value="characterClick">Single Character</option>
+                <option value="stringForm">String Character</option>
+            </select>
+
+            <br/>
+            <br/>
+
+            <label for="customString"><strong>Use Custom String:</strong></label>
+            <input id="customStringOption" name="customString" />
+            
+            <label style="padding-left: 15px;" for="resetButton"><strong>Reset KeyLog:</strong></label>
+            <button  name="resetButton" onclick="ResetKeyLog(this)">Reset</button>
+            
+            <label style="padding-left: 50rem;" for="github"><strong><a href="https://github.com/NoahBreedy">Made by Noah Breedy</a></strong></label>
+            
+
+          </fieldset>
+        </div>
+
+
+        <script src="./main.js"></script>
+    </body>
+</html>
