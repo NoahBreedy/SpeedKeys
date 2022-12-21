@@ -75,7 +75,7 @@ function update(){
     requestAnimationFrame(update);
 
      // I know I don't need this onupdate but it solves simple problems so whatever
-     if(optionsRef[3].value == "characterClick" || practiceCount>30){
+     if(optionsRef[3].value == "characterClick"){
         mainLetterRef.style.fontSize = `${16}em`; 
         mainLetterRef.innerHTML = keys[player.index];
         if(keys[player.index] == " "){
