@@ -10,7 +10,7 @@ document.getElementById("noRepeatsOption")
 ]
 
 let player = {shiftDown:false,key:null,index:0}
-let practiceCount = optionsRef[1].value % 100;
+let practiceCount = optionsRef[1].value ;
 let keys = [];
 let currentKeyCount=0;
 let results = {loops:0,loopTime:0,currentKeyTime:0};
@@ -37,7 +37,7 @@ function genCharacters(){
         useCustomString = true;
     }
 
-    practiceCount = optionsRef[1].value % 100;
+    practiceCount = optionsRef[1].value;
     keys = [];
     let lastKey = "";
     for(var i =0;i<practiceCount;i++){
@@ -186,7 +186,7 @@ document.addEventListener("keydown",(e)=>{
 
 function ResetKeyLog(e){
         resultsContainer.innerText = "";
-        practiceCount = optionsRef[1].value % 100;
+        practiceCount = optionsRef[1].value ;
         player = {shiftDown:false,key:null,index:0}
         genCharacters();
         frameCount = 0;
