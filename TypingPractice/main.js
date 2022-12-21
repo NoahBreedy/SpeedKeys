@@ -62,6 +62,9 @@ function update(){
      if(optionsRef[3].value == "characterClick" || practiceCount>30){
         mainLetterRef.style.fontSize = `${16}em`; 
         mainLetterRef.innerHTML = keys[player.index];
+        if(keys[player.index] == " "){
+            mainLetterRef.innerHTML = "⋅";
+        }
     }else if(optionsRef[3].value == "stringForm"){
         mainLetterRef.style.fontSize = `${(practiceCount/(practiceCount/2))*3}em`; 
         let stingRepresentation = genString(player.index);
@@ -88,18 +91,34 @@ function genString(ind,start){
             }
         }
         for(var i = ind; i < goTo;i++){
-            if(i == ind){
-                string += "<u>" + keys[i] + "</u>"
+            if(keys[i] != " "){
+                if(i == ind){
+                    string += "<u>" + keys[i] + "</u>"
+                }else{
+                    string += keys[i]
+                }
             }else{
-                string += keys[i]
+                if(i == ind){
+                    string += "<u>" + "⋅" + "</u>"
+                }else{
+                    string += "⋅";
+                }
             }
         }
     }else{
         for(var i = 0; i < keys.length;i++){
-            if(i == ind){
-                string += "<u>" + keys[i] + "</u>"
+            if(keys[i] != " "){
+                if(i == ind){
+                    string += "<u>" + keys[i] + "</u>"
+                }else{
+                    string += keys[i]
+                }
             }else{
-                string += keys[i]
+                if(i == ind){
+                    string += "<u>" + "⋅" + "</u>"
+                }else{
+                    string += "⋅";
+                }
             }
         }
     }
