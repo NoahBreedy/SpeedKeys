@@ -9,7 +9,7 @@ document.getElementById("customStringOption"),
 document.getElementById("noRepeatsOption")
 ]
 
-let player = {shiftDown:false,key:null,index:0}
+let player = {key:null,index:0}
 let practiceCount = optionsRef[1].value ;
 let keys = [];
 let currentKeyCount=0;
@@ -108,8 +108,13 @@ function genString(ind,start){
         }
         for(var i = ind; i < goTo;i++){
             if(keys[i] != " "){
+                let test = keys[i].toLowerCase();
                 if(i == ind){
-                    string += "<u>" + keys[i] + "</u>"
+                    if(test == "p" || test == "j" || test == "y" || test == "g"){
+                        string += "<a class='special'>" + keys[i] + "</a>"
+                    }else{
+                        string += "<u>" + keys[i] + "</u>"
+                    }
                 }else{
                     string += keys[i]
                 }
@@ -124,8 +129,14 @@ function genString(ind,start){
     }else{
         for(var i = 0; i < keys.length;i++){
             if(keys[i] != " "){
+                let test = keys[i].toLowerCase();
                 if(i == ind){
-                    string += "<u>" + keys[i] + "</u>"
+                    if(test == "p" || test == "j" || test == "y" || test == "g"){
+                        string += "<a class='special'>" + keys[i] + "<a/>"
+                    }else{
+                        string += "<u>" + keys[i] + "</u>"
+                    }
+                     
                 }else{
                     string += keys[i]
                 }
@@ -143,11 +154,6 @@ function genString(ind,start){
 
 
 //KeyBoard Event Handlers
-document.addEventListener("keyup",(e)=>{
-    if(e.keyCode == 16){
-        player.shiftDown = false;
-    }
-});
 document.addEventListener("keydown",(e)=>{ 
 
     player.key = e.key; 
@@ -167,6 +173,8 @@ document.addEventListener("keydown",(e)=>{
             res.appendChild(document.createTextNode(`Loop Time: ${parseFloat(results.loopTime).toFixed(3)}s`));
             res.appendChild(document.createElement('br'));
             res.appendChild(document.createTextNode(`Loops Done: ${results.loops}`));
+            res.appendChild(document.createElement('br'));
+            res.appendChild(document.createTextNode(`Chars PM: ${parseInt((practiceCount/results.loopTime) * 60)}`));
             
             res.style.color = "red";
             if(lastTime>=results.loopTime){
@@ -187,7 +195,7 @@ document.addEventListener("keydown",(e)=>{
 function ResetKeyLog(e){
         resultsContainer.innerText = "";
         practiceCount = optionsRef[1].value ;
-        player = {shiftDown:false,key:null,index:0}
+        player = {key:null,index:0}
         genCharacters();
         frameCount = 0;
         currentKeyCount = 0;
